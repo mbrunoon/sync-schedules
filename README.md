@@ -12,3 +12,14 @@ If you mark and block Feb 16 - Feb 19, it should save and block Feb 16 - Feb 19 
 - The calendar of other users should not be affected
 - Alpha and Beta should have their own databases
 - Alpha and Beta should have their own record of blocked dates
+
+### Database ORM
+
+User
+- E-mail
+- Password
+
+Schedule: 
+- Start Date
+- End Date
+- User (belongs-to)
