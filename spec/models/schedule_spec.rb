@@ -18,8 +18,8 @@ RSpec.describe Schedule, type: :model do
   describe "Validations" do
 
     it "Start date cannot be less than End date" do
-      @schedule = Schedule.new(start_date: Date.today, end_date: Date.yesterday, user: @user)
-      expect(@schedule).to_not be_valid
+      schedule = Schedule.new(start_date: Date.today, end_date: (Date.today - 1.day), user: @user)
+      expect(schedule).not_to be_valid
     end
 
   end

@@ -1,9 +1,12 @@
 class SchedulesController < ApplicationController
+  
+  before_action :authenticate_user!
+
   before_action :set_schedule, only: %i[ show edit update destroy ]
 
   # GET /schedules or /schedules.json
   def index
-    @schedules = Schedule.all
+    @schedules = current_user.schedules
   end
 
   # GET /schedules/1 or /schedules/1.json
@@ -24,7 +27,11 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.new(schedule_params)
 
     respond_to do |format|
+
       if @schedule.save
+
+        Synchronizer.synchronize_dates_with_user_email(@schedule.start_date, @schedule.end_date, @schedule.user.email)
+
         format.html { redirect_to schedule_url(@schedule), notice: "Schedule was successfully created." }
         format.json { render :show, status: :created, location: @schedule }
       else
@@ -58,6 +65,7 @@ class SchedulesController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_schedule
       @schedule = Schedule.find(params[:id])
@@ -67,4 +75,5 @@ class SchedulesController < ApplicationController
     def schedule_params
       params.require(:schedule).permit(:start_date, :end_date, :user_id)
     end
+
 end

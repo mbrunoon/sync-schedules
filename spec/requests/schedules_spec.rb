@@ -15,7 +15,7 @@ require 'rails_helper'
 RSpec.describe "/schedules", type: :request do
   
   before(:all) do
-    @user = User.create(email: "user@teste.com", password: "123456789")
+    @user = User.create(email: "user@test.com", password: "123456789")
   end
 
   # This should return the minimal set of attributes required to create a valid
@@ -23,7 +23,7 @@ RSpec.describe "/schedules", type: :request do
   # adjust the attributes here as well.
   let(:valid_attributes) {
     {
-      :start_date => Date.today,
+      :start_date => Date.today ,
       :end_date => Date.today,
       :user_id => @user.id
     }
@@ -31,8 +31,8 @@ RSpec.describe "/schedules", type: :request do
 
   let(:invalid_attributes) {
     {
-      :start_date => Date.tomorrow,
-      :end_date => Date.today,
+      :start_date => Date.today,
+      :end_date => Date.today - 1.day,
       :user_id => @user.id
     }
   }
@@ -101,8 +101,8 @@ RSpec.describe "/schedules", type: :request do
 
       let(:new_attributes) {
         {
-          :start_date => Date.today,
-          :end_date => Date.tomorrow,
+          :start_date => Date.today + 1.year,
+          :end_date => Date.tomorrow + 1.year,
           :user_id => @user.id
         }
       }
