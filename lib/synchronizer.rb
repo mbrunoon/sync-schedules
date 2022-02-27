@@ -3,7 +3,7 @@ class Synchronizer
 	require 'net/http'
 
 	HOST = ENV["HOST"]
-	SERVERS = ENV["SERVERS"].gsub(" ", "").split(",")
+	SERVERS = ENV["SERVERS"].gsub(" ", "").split(",") - [ENV["HOST"]]
 
 	def self.synchronize_dates_with_user_email(start_date, end_date, user_email)
 
