@@ -18,6 +18,11 @@ RSpec.describe "/schedules", type: :request do
     @user = User.create(email: "user@test.com", password: "123456789")
   end
 
+  before(:each) do
+    sign_in @user
+  end
+
+
   # This should return the minimal set of attributes required to create a valid
   # Schedule. As you add validations to Schedule, be sure to
   # adjust the attributes here as well.
@@ -38,6 +43,7 @@ RSpec.describe "/schedules", type: :request do
   }
 
   describe "GET /index" do
+
     it "renders a successful response" do
       Schedule.create! valid_attributes
       get schedules_url
