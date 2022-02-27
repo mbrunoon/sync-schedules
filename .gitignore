@@ -32,3 +32,5 @@
 
 # Ignore database local credentials
 /config/database.yml
+
+/.env
