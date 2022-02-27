@@ -2,11 +2,12 @@ class SchedulesController < ApplicationController
   
   before_action :authenticate_user!
 
+  before_action :set_user
   before_action :set_schedule, only: %i[ show edit update destroy ]
 
   # GET /schedules or /schedules.json
   def index
-    @schedules = current_user.schedules
+    @schedules = @user.schedules
   end
 
   # GET /schedules/1 or /schedules/1.json
@@ -24,7 +25,9 @@ class SchedulesController < ApplicationController
 
   # POST /schedules or /schedules.json
   def create
+
     @schedule = Schedule.new(schedule_params)
+    @schedule.user = @user
 
     respond_to do |format|
 
@@ -73,7 +76,11 @@ class SchedulesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def schedule_params
-      params.require(:schedule).permit(:start_date, :end_date, :user_id)
+      params.require(:schedule).permit(:start_date, :end_date)
+    end
+
+    def set_user
+      @user = current_user
     end
 
 end
