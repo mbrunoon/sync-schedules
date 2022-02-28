@@ -25,6 +25,8 @@ If you mark and block Feb 16 - Feb 19, it should save and block Feb 16 - Feb 19 
 
 :white_check_mark: Automated tests by RSpec
 
+:white_check_mark: Helper showing the distance time in words of schedules
+
 ## Demo
 Deployments were performed on free Heroku servers so the first access to them may take a few seconds.
 
