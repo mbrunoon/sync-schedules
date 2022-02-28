@@ -9,8 +9,12 @@
 </div>
 
 
-<% @schedules.each do |schedule| %>
-  <div class="d-flex flex-row ">
-      <%= render schedule %>    
-  </div>
-<% end %>
+
+<div class="d-flex justify-content-between">
+
+  <%= render "schedule_box", title: "Next", schedules: @schedules_future %>
+  <%= render "schedule_box", title: "Past", schedules: @schedules_past %>
+  
+</div>
+
+

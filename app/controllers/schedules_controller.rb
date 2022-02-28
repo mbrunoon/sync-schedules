@@ -7,7 +7,10 @@ class SchedulesController < ApplicationController
 
   # GET /schedules or /schedules.json
   def index
-    @schedules = @user.schedules.order(start_date: :desc)
+
+    @schedules_future = @user.schedules.where("start_date >= ?", Date.today).order(start_date: :asc)
+    @schedules_past = @user.schedules.where("start_date < ?", Date.today).order(start_date: :desc)
+
   end
 
   # GET /schedules/1 or /schedules/1.json
