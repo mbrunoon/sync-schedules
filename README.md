@@ -18,6 +18,7 @@ If you mark and block Feb 16 - Feb 19, it should save and block Feb 16 - Feb 19 
 :white_check_mark: Alpha and Beta should have their own databases
 
 :white_check_mark: Alpha and Beta should have their own record of blocked dates
+
 **Bonus**:
 
 :white_check_mark:  The application can be synchronized between N servers (all independent, each with its own database)
