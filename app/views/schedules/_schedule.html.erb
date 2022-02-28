@@ -5,3 +5,7 @@
 <div class="p-2">
   <strong>End:</strong> <%= schedule.end_date.strftime("%d/%b/%Y") %>
 </div>
+
+<div class="p-2">
+  <b><%= distance_of_time_in_words(schedule.start_date) %></b>
+</div>

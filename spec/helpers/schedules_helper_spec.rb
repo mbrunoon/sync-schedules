@@ -11,4 +11,29 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe SchedulesHelper, type: :helper do
+
+	describe "distance of time in words" do
+
+		it "Future" do
+			expect(distance_of_time_in_words( Date.today + 10.day )).to eq("10 days left")
+		end
+
+		it "Tomorrow" do
+			expect(distance_of_time_in_words( Date.today + 1.day )).to eq("Tomorrow")
+		end
+
+		it "Today" do
+			expect(distance_of_time_in_words(Date.today)).to eq("Today")
+		end
+
+		it "Yesterday" do
+			expect(distance_of_time_in_words( Date.today - 1.day )).to eq("Yesterday")
+		end
+
+		it "Past" do
+			expect(distance_of_time_in_words( Date.today - 10.day )).to eq("10 days ago")
+		end		
+
+	end
+
 end
