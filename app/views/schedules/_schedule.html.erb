@@ -1,17 +1,7 @@
-<div id="<%= dom_id schedule %>">
-  <p>
-    <strong>Start:</strong>
-    <%= schedule.start_date %>
-  </p>
+<div class="p-2">
+    <strong>Start:</strong> <%= schedule.start_date.strftime("%d/%b/%Y") %>    
+</div>
 
-  <p>
-    <strong>End:</strong>
-    <%= schedule.end_date %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= schedule.user_id %>
-  </p>
-
+<div class="p-2">
+  <strong>End:</strong> <%= schedule.end_date.strftime("%d/%b/%Y") %>
 </div>
